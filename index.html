@@ -3,186 +3,599 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Auritan — Dark Fantasy Tabletop RPG & VTT | Pre-Alpha & Newsletter</title>
-  <meta name="description" content="Schluss mit W20-Zufallsfrust. Auritan ist ein kompromissloses Dark-Fantasy-Rollenspiel mit 2W12-Glockenkurve, taktischen Hex-Kämpfen und nahtloser Dungeon-Erkundung.">
+  <title>Auritan — Dark Fantasy Rollenspiel & Universum | Powered by BALPHEMOR</title>
+  <meta name="description" content="Auritan ist eine neue Dark-Fantasy-Spielemarke & TTRPG-Universum mit 2W12-Glockenkurve und taktischer Hex-Tiefe. Powered by BALPHEMOR.">
+  <meta name="keywords" content="Auritan, Balphemor, Balphemor Gaming, TTRPG, Dark Fantasy, 2W12, Hex RPG, Virtual Tabletop, Balurea">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://auritan.de">
+  <meta property="og:title" content="Auritan — Dark Fantasy Rollenspiel & Universum">
+  <meta property="og:description" content="Taktisches Rollenspiel auf dem Hex-Raster mit 2W12-Glockenkurve. Erste Testspiele starten ab Januar 2027!">
+  <meta property="og:image" content="assets/meta_cover_banner_v2.jpg">
+
+  <link rel="icon" type="image/png" href="assets/auritan_logo.png">
   <link rel="stylesheet" href="style.css">
+  
+  <!-- Google Fonts: Cinzel für Grimdark-Epik, Oswald für Markantes, Inter für Lesbarkeit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <!-- Navigation -->
   <header class="site-header">
     <div class="nav-container">
-      <a href="#" class="brand-logo">
-        <span class="brand-crest">⚔️</span>
-        <span class="brand-name">AURITAN</span>
+      <a href="#" class="brand-logo" title="Auritan Home">
+        <img src="assets/auritan_wordmark_master.png" alt="AURITAN" class="brand-wordmark-nav">
       </a>
+
       <nav class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#simulator">2W12 Simulator</a>
-        <a href="#welt">Balurea</a>
-        <a href="#newsletter" class="nav-btn-highlight">Balurea-Depesche</a>
+        <a href="#features">Universum</a>
+        <a href="#simulator">2W12 Probe</a>
+        <a href="#welt">Welt Balurea</a>
+        <a href="#" id="nav-wiki-btn" class="nav-wiki-link" title="Archive noch versiegelt">
+          📜 Wiki & Chronik <span class="badge-soon">In Kürze</span>
+        </a>
+        <a href="https://www.baalphemor.de" target="_blank" rel="noopener" class="nav-balphemor-pill" title="Besuche das BALPHEMOR Portal www.baalphemor.de">
+          <img src="assets/balphemor_shield.png" alt="BALPHEMOR" class="nav-pill-shield">
+          <span>BALPHEMOR</span>
+        </a>
+        <a href="#alpha" class="nav-btn-highlight">Tester & News</a>
       </nav>
+
+      <!-- Mobile Hamburger -->
+      <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-badge">🔨 Work in Progress · Alpha-Tester-Suche ab 01.11.2026</div>
-      <h1 class="hero-title">Schluss mit Würfel-Zufallsfrust.<br><span class="text-gold">Wahre Taktik auf dem Hex-Raster.</span></h1>
-      <p class="hero-lead">
-        Auritan vereint die düstere Atmosphäre von <em>Warhammer</em> und <em>Darkest Dungeon</em> mit den tiefgründigen Rundenkämpfen von <em>Divinity: Original Sin</em> — angetrieben von einer mathematisch balancierten <strong>2W12-Glockenkurve</strong>.
-      </p>
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <nav class="mobile-nav-links">
+      <a href="#features" class="mobile-link">Universum</a>
+      <a href="#simulator" class="mobile-link">2W12 Probe</a>
+      <a href="#welt" class="mobile-link">Welt Balurea</a>
+      <a href="#" class="mobile-link" id="mobile-wiki-btn">📜 Wiki & Chronik (In Kürze)</a>
+      <a href="https://www.baalphemor.de" target="_blank" rel="noopener" class="mobile-link balphemor-special">
+        <img src="assets/balphemor_shield.png" alt="BALPHEMOR" style="width:22px; vertical-align:middle; margin-right:8px;">
+        Powered by BALPHEMOR (www.baalphemor.de)
+      </a>
+      <a href="#alpha" class="btn-primary mobile-link" style="text-align:center; margin-top:12px;">Tester werden / Newsletter</a>
+    </nav>
+  </div>
 
-      <!-- Primary Lead Form -->
-      <div class="lead-box" id="newsletter">
-        <div class="lead-box-header">
-          <h3>📬 Werde Alpha-Pionier (Start: 01.11.2026) & erhalte die Balurea-Depesche</h3>
-          <p>Aktuell in aktiver Entwicklung. Ab 01.11.2026 vergeben wir die ersten exklusiven Zugänge für den spielbaren 3D-Web-VTT. Trag dich ein, um die Einladung direkt ins Postfach zu bekommen.</p>
-        </div>
-        <form class="lead-form" id="signup-form">
-          <input type="email" id="email-input" placeholder="Deine E-Mail-Adresse eingeben..." required>
-          <button type="submit" class="btn-primary">Kostenlos eintragen ➔</button>
-        </form>
-        <p class="lead-footnote">🔒 100 % werbefrei · Jeden Sonntag um 18:00 Uhr · Jederzeit mit 1 Klick abbestellbar.</p>
-        <div class="lead-feedback" id="lead-feedback"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Die 4 Säulen -->
-  <section class="features-section" id="features">
-    <div class="section-container">
-      <div class="section-header">
-        <p class="section-kicker">Das Spielprinzip</p>
-        <h2>Vier Säulen eines kompromisslosen Taktik-RPGs</h2>
-        <p class="section-lead">Warum Auritan das Rollenspiel-Erlebnis für Planer, Taktiker und Dark-Fantasy-Liebhaber neu definiert.</p>
-      </div>
-
-      <div class="features-grid">
-        <article class="feature-card">
-          <div class="feature-icon">🎲</div>
-          <h3>Die 2W12-Glockenkurve</h3>
-          <p>
-            Beim 1W20 hat jede Zahl dieselbe 5 %-Chance — reines Chaos. Mit <strong>2W12 (2–24)</strong> bildet die Summe eine echte Glockenkurve: Mittlere Werte fallen verlässlich. Deine Taktik und Flankenboni entscheiden, nicht das Glück.
-          </p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon">🌹</div>
-          <h3>Nahtlose Echtzeit & 7-Hex-Rose</h3>
-          <p>
-            Erkunde Katakomben in flüssiger Echtzeit mit Leash-Gefolge. Bei Feindsichtung stoppt die Zeit sofort und deine Gruppe formiert sich automatisch in der <strong>7-Hex-Rose</strong>: Tanks vorn, Schützen im Rückraum — kein Türrahmen-Stau!
-          </p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon">🗡️</div>
-          <h3>Inquisition & Gefolge-Synergien</h3>
-          <p>
-            Ziehe mit Inquisitor Gideon von Spitzbach, Dieben, ausgebildeten Kriegshunden und Stadtwachen in die Finsternis. Kombiniere Niederwerfen, Flankenstiche und Richtsprüche für tödliche Kettenangriffe.
-          </p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon">🧪</div>
-          <h3>Gnadenlose DoTs & Rüstungsbruch</h3>
-          <p>
-            Schwere Rüstung fängt Stahl ab — aber kein Gift. Unser DoT-System (Damage over Time) lässt Feinde bluten, verbrennen und vergiften. Bis zu 3 Gift-Stacks fressen sich direkt durch die Lebenspunkte übermächtiger Bosse.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interaktiver Würfel-Simulator -->
-  <section class="simulator-section" id="simulator">
-    <div class="section-container">
-      <div class="section-header">
-        <p class="section-kicker">Interaktives Experiment</p>
-        <h2>2W12 vs. 1W20: Erlebe den Unterschied selbst</h2>
-        <p class="section-lead">Klicke auf die Würfel und beobachte, wie verlässlich die 2W12-Glockenkurve Taktiker belohnt.</p>
-      </div>
-
-      <div class="simulator-box">
-        <div class="simulator-controls">
-          <button type="button" id="roll-2w12-btn" class="btn-primary">🎲 2W12 würfeln (Auritan)</button>
-          <button type="button" id="roll-1w20-btn" class="btn-secondary">🎲 1W20 würfeln (Klassisch)</button>
-        </div>
-
-        <div class="simulator-display">
-          <div class="dice-result-card" id="result-card-2w12">
-            <span class="dice-tag">Auritan (2W12)</span>
-            <div class="dice-number" id="val-2w12">-</div>
-            <div class="dice-detail" id="detail-2w12">Tippe auf den Button, um zu rollen</div>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-backdrop"></div>
+      <div class="hero-overlay"></div>
+      
+      <!-- Dezentes, seitliches BALPHEMOR Siegel (Bild 1 Feedback) -->
+      <aside class="side-balphemor-badge" aria-label="Dachmarke BALPHEMOR">
+        <a href="https://www.baalphemor.de" target="_blank" rel="noopener" class="side-badge-inner" title="Zur Dachmarke www.baalphemor.de">
+          <img src="assets/balphemor_shield.png" alt="BALPHEMOR Siegel" class="side-badge-shield">
+          <div class="side-badge-text">
+            <span class="side-badge-prefix">POWERED BY</span>
+            <span class="side-badge-brand">BALPHEMOR</span>
+            <span class="side-badge-url">www.baalphemor.de ➔</span>
           </div>
-          <div class="dice-result-card" id="result-card-1w20">
-            <span class="dice-tag">Klassisch (1W20)</span>
-            <div class="dice-number" id="val-1w20">-</div>
-            <div class="dice-detail" id="detail-1w20">Tippe auf den Button, um zu rollen</div>
+        </a>
+      </aside>
+
+      <div class="hero-content">
+        <div class="hero-status-pill">
+          <span class="status-dot"></span> Pre-Alpha Phase · Erste Testspiele ab Januar 2027
+        </div>
+
+        <!-- Losgelöster grafischer PNG-Schriftzug -->
+        <div class="hero-branding-block">
+          <div class="hero-wordmark-wrap">
+            <img src="assets/auritan_wordmark_master.png" alt="AURITAN" class="hero-wordmark-img">
           </div>
         </div>
 
-        <div class="simulator-insight" id="simulator-insight">
-          💡 <strong>Mathematischer Fakt:</strong> Bei 2W12 landen über <strong>66 % aller Würfe</strong> im planbaren Mittelfeld zwischen 9 und 17. Bei 1W20 ist jeder Wurf ein unberechenbarer Münzwurf.
-        </div>
-      </div>
-    </div>
-  </section>
+        <h1 class="hero-title">
+          Schluss mit Würfel-Zufallsfrust.<br>
+          <span class="text-gold">Wahre Taktik auf dem Hex-Raster.</span>
+        </h1>
 
-  <!-- Das Lager & Taverne -->
-  <section class="hub-preview-section" id="welt">
-    <div class="section-container">
-      <div class="section-header">
-        <p class="section-kicker">Zuflucht in Balurea</p>
-        <h2>Die Taverne zum Goldenen Greif</h2>
-        <p class="section-lead">Zwischen zwei Verdammnissen gibt es ein warmes Kaminfeuer.</p>
-      </div>
+        <p class="hero-lead">
+          Auritan ist eine neue, düstere Rollenspielmarke in der Welt von <strong>Balurea</strong>. 
+          Kein W20-Chaos, keine Frust-Patzer im entscheidenden Moment — sondern planbare Taktik durch eine mathematisch balancierte <strong>2W12-Glockenkurve</strong>.
+        </p>
 
-      <div class="hub-preview-card">
-        <div class="hub-text">
-          <h3>Rasten, Klingen ölen, Rekrutieren</h3>
-          <p>
-            Im Goldenen Greif bereiten sich deine Recken auf die nächsten Expeditionen vor. Hier heuerst du auf dem Dorfplatz neue Gefährten an, flickt Schmied Grimbart eure Rüstungen und studiert Gelehrter Eldrin die uralten Chroniken.
+        <!-- Primary Lead Capture Box mit 2 Optionen & Januar 2027 Hinweis -->
+        <div class="lead-box" id="alpha">
+          <div class="lead-box-header">
+            <h3>📬 Werde Teil von Auritan & Balurea</h3>
+            <p>Wähle deine Interessensgebiete und erhalte Entwicklungs-Updates sowie die Einladung zu den ersten Testrunden.</p>
+          </div>
+          
+          <form class="lead-form" id="signup-form">
+            <div class="lead-input-row">
+              <input type="email" id="email-input" placeholder="Deine E-Mail-Adresse eintragen..." required autocomplete="email">
+              <button type="submit" class="btn-primary">
+                <span>Vormerken</span>
+                <span class="btn-arrow">➔</span>
+              </button>
+            </div>
+
+            <!-- Die beiden Auswahl-Optionen -->
+            <div class="lead-options-grid">
+              <label class="lead-option-label">
+                <input type="checkbox" id="opt-newsletter" name="lead_interests" value="newsletter" checked>
+                <span class="custom-checkbox"></span>
+                <span class="option-content">
+                  <strong>1. Newsletter</strong>
+                  <span class="option-desc">Wöchentliche Balurea-Depesche mit Lore, Artworks & Mechanics</span>
+                </span>
+              </label>
+
+              <label class="lead-option-label">
+                <input type="checkbox" id="opt-tester" name="lead_interests" value="tester" checked>
+                <span class="custom-checkbox"></span>
+                <span class="option-content">
+                  <strong>2. Interesse als Tester</strong>
+                  <span class="option-desc">Zugang zu Closed-Playtests & direktes Entwickler-Feedback</span>
+                </span>
+              </label>
+            </div>
+
+            <!-- Klarer Zeitplan-Hinweis -->
+            <div class="tester-timeline-notice">
+              <span class="notice-icon">⏳</span>
+              <span class="notice-text"><strong>Wichtiger Hinweis:</strong> Erste interaktive Testspiele für ausgewählte Tester starten voraussichtlich ab <strong>Januar 2027</strong>.</span>
+            </div>
+          </form>
+
+          <p class="lead-footnote">
+            🔒 100 % vertraulich & werbefrei · Jederzeit mit 1 Klick widerrufbar · Siehe <a href="#" class="open-privacy-link">Datenschutzerklärung</a>.
           </p>
-          <ul class="hub-list">
-            <li>🔥 <strong>Kaminfeuer-Rast:</strong> Kurze Rast zum Klingenölen & Großes Lager zur vollständigen Regeneration.</li>
-            <li>🗺️ <strong>Kartentisch:</strong> Taktische Einsatzplanung und Vorstöße in vergessene Grüfte.</li>
-            <li>🛡️ <strong>Rekrutierungsbüro:</strong> Stadtwachen, Fährtenleser und treue Kriegshunde anwerben.</li>
-          </ul>
-          <a href="#newsletter" class="btn-primary" style="display:inline-block; margin-top:16px;">Jetzt Alpha-Zugang sichern ➔</a>
+          <div class="lead-feedback" id="lead-feedback" role="alert" aria-live="polite"></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
+    <!-- Visual Cinematic Showcase Banner -->
+    <section class="cinematic-showcase">
+      <div class="section-container">
+        <div class="showcase-frame">
+          <img src="assets/meta_cover_banner_v2.jpg" alt="Auritan Dark Fantasy Banner" class="showcase-banner-img">
+          <div class="showcase-caption">
+            <p class="quote-text">„In den tiefen Schatten Balureas zählt kein Glück — nur deine Klinge, dein Glaube und deine Taktik.“</p>
+            <span class="quote-author">— Gideon von Spitzbach, Großinquisitor</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Die 3 Säulen: Jetzt mit Fokus auf NEUE SPIELEMARKE & UNIVERSUM (Bild 2 Feedback) -->
+    <section class="features-section" id="features">
+      <div class="section-container">
+        <div class="section-header">
+          <p class="section-kicker">Das Spielkonzept & Universum</p>
+          <h2>Eine neue Ära des taktischen Rollenspiels</h2>
+          <p class="section-lead">Warum Auritan als Marke und Spielesystem neue Maßstäbe für Taktiker und Dark-Fantasy-Liebhaber setzt.</p>
+        </div>
+
+        <div class="features-grid-3">
+          <article class="feature-card">
+            <div class="feature-icon">🎲</div>
+            <h3>Die 2W12-Glockenkurve</h3>
+            <p>
+              Beim klassischen 1W20 hat jeder Wert dieselbe 5 %-Chance — reines Chaos. <strong>2W12 (2–24)</strong> bildet eine harmonische Glockenkurve mit dem Gipfel bei 13. Gute Vorbereitung und Flankenboni entscheiden das Gefecht, nicht blindes Würfelglück.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">⚔️</div>
+            <h3>Hex-Taktik & Trupp-Befehle</h3>
+            <p>
+              Präzise Kanten-Topologie ohne Gitter-Verzerrungen. Befehlige Gefolgsleute, Kriegshunde und Inquisitions-Recken mit klaren taktischen Verhaltensmustern wie Flankenschutz, Schutzgarde oder aggressivem Durchbruch.
+            </p>
+          </article>
+
+          <!-- Bild 2 Feedback: Marke & verschiedene Spiele im Bau -->
+          <article class="feature-card highlight-card">
+            <div class="feature-icon">🏰</div>
+            <h3>Neue Marke & Großes Universum</h3>
+            <p>
+              <strong>Auritan ist eine neue, eigenständige Spielemarke:</strong> Rund um die facettenreiche Hintergrundwelt <em>Balurea</em> entstehen verschiedene Spiele — vom browserbasierten 3D-Squad-RPG bis hin zu Tabletop- & Taktik-Formaten, vereint unter einem gemeinsamen, tiefgründigen Universum.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interaktiver Würfel-App Simulator (Bild 3 Feedback: Rollende 2W12 vs 3 Verteidigungswerte 8, 12, 14) -->
+    <section class="simulator-section" id="simulator">
+      <div class="section-container">
+        <div class="section-header">
+          <p class="section-kicker">Interaktive Würfel-App</p>
+          <h2>2W12 Probe gegen Verteidigung: Teste die Erfolgsgrade</h2>
+          <p class="section-lead">Lass die beiden W12 rollen und beobachte, wie deine Probe gleichzeitig gegen 3 typische Verteidigungswerte (8, 12 und 14) abschneidet.</p>
+        </div>
+
+        <div class="dice-app-container">
+          <!-- Roll Area mit rollenden Würfeln -->
+          <div class="dice-stage">
+            <div class="dice-pair" id="dice-pair">
+              <!-- Würfel 1 -->
+              <div class="die-3d-box" id="die-1">
+                <div class="die-inner">
+                  <span class="die-face-label">W12 #1</span>
+                  <span class="die-val" id="die-1-val">7</span>
+                </div>
+              </div>
+              <!-- Plus Zeichen -->
+              <div class="dice-plus">+</div>
+              <!-- Würfel 2 -->
+              <div class="die-3d-box" id="die-2">
+                <div class="die-inner">
+                  <span class="die-face-label">W12 #2</span>
+                  <span class="die-val" id="die-2-val">6</span>
+                </div>
+              </div>
+              <!-- Gleichheitszeichen & Summe -->
+              <div class="dice-equals">=</div>
+              <div class="dice-total-badge" id="dice-total-box">
+                <span class="total-label">SUMME</span>
+                <span class="total-val" id="dice-total-val">13</span>
+              </div>
+            </div>
+
+            <!-- Roll Button -->
+            <div class="dice-action-wrap">
+              <button type="button" id="roll-action-btn" class="btn-primary btn-roll-dice">
+                <span class="roll-icon">🎲</span>
+                <span>2W12 jetzt rollen lassen</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Die 3 Verteidigungs-Beispiele (8, 12, 14) mit Erfolgsgraden -->
+          <div class="defense-eval-grid">
+            <!-- Beispiel 1: Verteidigung 8 -->
+            <div class="defense-card" id="def-card-8">
+              <div class="defense-card-header">
+                <span class="def-target-badge">VT 8</span>
+                <h4>Leichte Deckung</h4>
+              </div>
+              <p class="def-desc">Geringer Schutz / unvorsichtiger Bandit</p>
+              <div class="def-outcome-box" id="outcome-8">
+                <div class="outcome-status is-hit">✅ Probe Gelingt</div>
+                <div class="outcome-margin">Wurf 13 vs VT 8 (Differenz: +5)</div>
+                <div class="outcome-eg">
+                  <span class="eg-number">+1</span>
+                  <span class="eg-text">Erfolgsgrad (EG)</span>
+                </div>
+                <div class="outcome-hint">Voller Treffer + spürbare Zusatzwirkung</div>
+              </div>
+            </div>
+
+            <!-- Beispiel 2: Verteidigung 12 -->
+            <div class="defense-card is-primary" id="def-card-12">
+              <div class="defense-card-header">
+                <span class="def-target-badge target-gold">VT 12</span>
+                <h4>Standard-Verteidigung</h4>
+              </div>
+              <p class="def-desc">Geübter Stadtwächter mit Rundschild</p>
+              <div class="def-outcome-box" id="outcome-12">
+                <div class="outcome-status is-hit">✅ Probe Gelingt</div>
+                <div class="outcome-margin">Wurf 13 vs VT 12 (Differenz: +1)</div>
+                <div class="outcome-eg">
+                  <span class="eg-number">0</span>
+                  <span class="eg-text">Erfolgsgrade (EG)</span>
+                </div>
+                <div class="outcome-hint">Regulärer Treffer (volle Grundwirkung)</div>
+              </div>
+            </div>
+
+            <!-- Beispiel 3: Verteidigung 14 -->
+            <div class="defense-card" id="def-card-14">
+              <div class="defense-card-header">
+                <span class="def-target-badge target-blood">VT 14</span>
+                <h4>Schwere Panzerung</h4>
+              </div>
+              <p class="def-desc">Inquisitions-Ritter / befestigter Elite-Boss</p>
+              <div class="def-outcome-box" id="outcome-14">
+                <div class="outcome-status is-miss">❌ Abgewehrt</div>
+                <div class="outcome-margin">Wurf 13 vs VT 14 (Differenz: -1)</div>
+                <div class="outcome-eg">
+                  <span class="eg-number">0</span>
+                  <span class="eg-text">Erfolgsgrade</span>
+                </div>
+                <div class="outcome-hint">Klinge gleitet am gehärteten Stahl ab</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Auritan Erfolgsgrad-Erklärung -->
+          <div class="simulator-rule-banner">
+            <span class="rule-icon">⚖️</span>
+            <div class="rule-content">
+              <strong>Das Auritan-Erfolgsgrad-System:</strong>
+              Eine Probe gelingt, sobald deine 2W12-Summe die Verteidigung erreicht oder übertrifft. 
+              Pro volle <strong>4 Punkte Überhang</strong> (Differenz ≥ 4, 8, 12...) erzielst du <strong>+1 zusätzlichen Erfolgsgrad (EG)</strong>, der Bonuseffekte, Durchschlag oder Zusatzschaden freischaltet.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Welt & Wiki Teaser -->
+    <section class="hub-preview-section" id="welt">
+      <div class="section-container">
+        <div class="section-header">
+          <p class="section-kicker">Hintergrundwelt & Lore</p>
+          <h2>Die Schatten von Balurea</h2>
+          <p class="section-lead">Eine Welt gezeichnet von uraltem Verfall, fanatischer Inquisition und vergessenen Katakomben.</p>
+        </div>
+
+        <div class="hub-preview-card">
+          <div class="hub-text">
+            <h3>Zwischen Kaminfeuer und Kerkergruft</h3>
+            <p>
+              In der Zuflucht der <em>Taverne zum Goldenen Greif</em> schärfen deine Recken ihre Klingen, studieren verbotene Folianten und heuern Fährtenleser an. 
+              Jenseits der Stadtmauern liegt Balurea: Ein vom Wahnsinn zerrüttetes Reich, in dem jede Expedition die letzte sein kann.
+            </p>
+            
+            <div class="wiki-action-block">
+              <button type="button" class="btn-wiki-locked" id="wiki-teaser-btn">
+                <span class="lock-icon">🔒</span>
+                <span>Welten-Kompendium & Wiki</span>
+                <span class="locked-tag">In Kürze verfügbar</span>
+              </button>
+              <p class="wiki-subtext">Die Schreiber der Inquisition versiegeln derzeit die Archive. Das vollständige Online-Wiki öffnet pünktlich zum Start der Closed Alpha.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BALPHEMOR GAMING Dachmarke & Co-Branding (Verlinkt auf www.baalphemor.de) -->
+    <section class="umbrella-section">
+      <div class="section-container">
+        <div class="umbrella-card">
+          <div class="umbrella-logo-col">
+            <a href="https://www.baalphemor.de" target="_blank" rel="noopener">
+              <img src="assets/balphemor_de_logo.png" alt="BALPHEMOR.de Logo" class="umbrella-balphemor-logo">
+            </a>
+          </div>
+          <div class="umbrella-text-col">
+            <div class="umbrella-badge">DAS GAMING-PORTAL</div>
+            <h2>Ein Projekt von BALPHEMOR GAMING</h2>
+            <p>
+              <strong>AURITAN</strong> ist das Flaggschiff im Spieleportfolio von <strong>BALPHEMOR GAMING</strong>. 
+              Hier entstehen digitale TTRPG-Erlebnisse, strategische Tabletop-Engines sowie epische maritime Flottenschlachten.
+            </p>
+            <div class="umbrella-actions">
+              <a href="https://www.baalphemor.de" target="_blank" rel="noopener" class="btn-primary">
+                Portal auf www.baalphemor.de erkunden ➔
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer mit rechtlicher Absicherung -->
   <footer class="site-footer">
     <div class="footer-container">
-      <div class="footer-col">
-        <h4>AURITAN</h4>
-        <p>Ein taktisches Dark-Fantasy-Rollenspiel & Virtual Tabletop von Michael Stahlschmidt (Baalphemor).</p>
+      <div class="footer-col brand-col">
+        <div class="footer-brand">
+          <img src="assets/auritan_logo.png" alt="Auritan" class="footer-logo">
+          <span class="footer-brand-title">AURITAN</span>
+        </div>
+        <p class="footer-tagline">
+          Ein taktisches Dark-Fantasy-Rollenspiel & Spielemarke von Michael Stahlschmidt.
+        </p>
+        <div class="footer-powered">
+          <img src="assets/balphemor_shield.png" alt="BALPHEMOR Shield" class="footer-shield-mini">
+          <span>Powered by <a href="https://www.baalphemor.de" target="_blank" rel="noopener"><strong>BALPHEMOR</strong></a></span>
+        </div>
       </div>
+
       <div class="footer-col">
-        <h4>Wöchentlicher Newsletter</h4>
-        <p>Die <strong>Balurea-Depesche</strong>: Jeden Sonntag um 18:00 Uhr die wichtigsten Updates, direkt in dein Postfach.</p>
+        <h4>Navigation</h4>
+        <ul class="footer-nav">
+          <li><a href="#features">Universum</a></li>
+          <li><a href="#simulator">2W12-Probe</a></li>
+          <li><a href="#welt">Welt Balurea</a></li>
+          <li><a href="#" class="open-wiki-modal-link">Welten-Wiki (Status)</a></li>
+          <li><a href="#alpha">Tester & Newsletter</a></li>
+        </ul>
       </div>
+
       <div class="footer-col">
-        <h4>Folge der Inquisition</h4>
-        <div class="social-links">
-          <a href="https://facebook.com/AuritanRPG" target="_blank" rel="noopener">Facebook (@AuritanRPG)</a>
-          <a href="https://instagram.com/auritan_rpg" target="_blank" rel="noopener">Instagram (@auritan_rpg)</a>
+        <h4>Rechtliches & Compliance</h4>
+        <ul class="footer-nav">
+          <li><a href="#" class="modal-trigger" data-modal="modal-impressum">Impressum (§ 5 DDG)</a></li>
+          <li><a href="#" class="modal-trigger" data-modal="modal-datenschutz">Datenschutzerklärung (DSGVO)</a></li>
+          <li><a href="#" class="modal-trigger" data-modal="modal-disclaimer">Haftungsausschluss & Disclaimer</a></li>
+          <li><a href="#" class="modal-trigger" data-modal="modal-alpha-status">Pre-Alpha Entwicklungsstatus</a></li>
+          <li><a href="#" id="open-cookie-settings-btn">🍪 Cookie-Einstellungen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Community & Portal</h4>
+        <p class="footer-subtext">Folge den Fortschritten und diskutiere mit in der BALPHEMOR-Community:</p>
+        <div class="footer-social-links">
+          <a href="https://www.baalphemor.de" target="_blank" rel="noopener" class="footer-pill-link">🌐 www.baalphemor.de</a>
+          <a href="https://facebook.com/AuritanRPG" target="_blank" rel="noopener" class="footer-pill-link">Facebook (@AuritanRPG)</a>
+          <a href="https://instagram.com/auritan_rpg" target="_blank" rel="noopener" class="footer-pill-link">Instagram (@auritan_rpg)</a>
         </div>
       </div>
     </div>
+
     <div class="footer-bottom">
-      <p>Auritan © 2026 Michael Stahlschmidt · Alle Rechte vorbehalten · Impressum & Datenschutz</p>
+      <div class="footer-bottom-inner">
+        <p>AURITAN © 2026 Michael Stahlschmidt · Alle Rechte vorbehalten · Auritan.de ist eine offizielle Präsenz von BALPHEMOR GAMING (<a href="https://www.baalphemor.de" target="_blank" rel="noopener">www.baalphemor.de</a>).</p>
+      </div>
     </div>
   </footer>
+
+  <!-- ========================================================
+       MODALS: RECHTLICHE TEXTE & STATUS
+       ======================================================== -->
+
+  <!-- Modal 1: Impressum -->
+  <div class="modal-overlay" id="modal-impressum" role="dialog" aria-modal="true" aria-labelledby="modal-impressum-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modal-impressum-title">Impressum</h3>
+        <button class="modal-close" aria-label="Schließen">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h4>Angaben gemäß § 5 DDG (Digitale-Dienste-Gesetz, ehem. TMG):</h4>
+        <p>
+          <strong>Michael Stahlschmidt</strong><br>
+          BALPHEMOR Medien, Fotografie & Gaming<br>
+          [Straße, Hausnummer]<br>
+          [PLZ, Ort]<br>
+          Deutschland
+        </p>
+
+        <h4>Kontakt:</h4>
+        <p>
+          E-Mail: <a href="mailto:info@balphemor.de">info@balphemor.de</a><br>
+          Web: <a href="https://www.baalphemor.de" target="_blank" rel="noopener">https://www.baalphemor.de</a>
+        </p>
+
+        <h4>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</h4>
+        <p>
+          Michael Stahlschmidt<br>
+          [Straße, Hausnummer, PLZ, Ort]
+        </p>
+
+        <h4>EU-Streitschlichtung:</h4>
+        <p>
+          Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: 
+          <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>.<br>
+          Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Datenschutz (DSGVO) -->
+  <div class="modal-overlay" id="modal-datenschutz" role="dialog" aria-modal="true" aria-labelledby="modal-datenschutz-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modal-datenschutz-title">Datenschutzerklärung (DSGVO)</h3>
+        <button class="modal-close" aria-label="Schließen">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h4>1. Verantwortlicher für die Datenverarbeitung</h4>
+        <p>
+          Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:<br>
+          <strong>Michael Stahlschmidt / BALPHEMOR</strong><br>
+          E-Mail: info@balphemor.de<br>
+          Web: https://www.baalphemor.de
+        </p>
+
+        <h4>2. Zweck & Rechtsgrundlage der Datenverarbeitung</h4>
+        <p>
+          Diese Website dient als reine Pre-Launch- und Informationsseite für das Spiel <em>Auritan</em>. 
+          Wir verarbeiten personenbezogene Daten streng zweckgebunden:
+        </p>
+        <ul>
+          <li><strong>Server-Logdateien (Art. 6 Abs. 1 lit. f DSGVO):</strong> Beim Aufruf unserer Website erfasst der Webserver technisch erforderliche Daten (IP-Adresse in anonymisierter Form, Browsertyp, Uhrzeit des Zugriffs, Referrer-URL), um Stabilität und Sicherheit zu gewährleisten.</li>
+          <li><strong>Alpha-Vormerkung & Newsletter (Art. 6 Abs. 1 lit. a DSGVO):</strong> Wenn du dich freiwillig in unsere Vormerkliste einträgst (für Newsletter und/oder Tester-Interesse), speichern wir deine E-Mail-Adresse ausschließlich zu diesem gewählten Zweck. Erste Testspiele starten ab Januar 2027.</li>
+        </ul>
+
+        <h4>3. Kein Tracking durch Drittanbieter</h4>
+        <p>
+          Auf dieser Pre-Launch-Seite setzen wir <strong>keine</strong> externen Werbenetzwerke, kein Google Analytics, kein Meta-Pixel und keine Profiling-Cookies ein.
+        </p>
+
+        <h4>4. Speicherdauer & Widerruf</h4>
+        <p>
+          Deine E-Mail-Adresse wird gespeichert, bis du deine Einwilligung widerrufst. Du kannst deine Einwilligung zur Speicherung deiner Daten und deren Nutzung für den E-Mail-Versand jederzeit mit Wirkung für die Zukunft per E-Mail an <a href="mailto:info@balphemor.de">info@balphemor.de</a> widerrufen.
+        </p>
+
+        <h4>5. Betroffenenrechte</h4>
+        <p>
+          Du hast jederzeit das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16 DSGVO), Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art. 18 DSGVO) sowie Datenübertragbarkeit (Art. 20 DSGVO).
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Disclaimer & Haftungsausschluss -->
+  <div class="modal-overlay" id="modal-disclaimer" role="dialog" aria-modal="true" aria-labelledby="modal-disclaimer-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modal-disclaimer-title">Haftungsausschluss & Urheberrecht</h3>
+        <button class="modal-close" aria-label="Schließen">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h4>Haftung für Inhalte</h4>
+        <p>
+          Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
+        </p>
+
+        <h4>Haftung für Links</h4>
+        <p>
+          Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+        </p>
+
+        <h4>Urheberrecht</h4>
+        <p>
+          Die durch Michael Stahlschmidt (BALPHEMOR) erstellten Inhalte, 3D-Modelle, Grafiken, Texte, Regelsysteme und Spielkonzepte auf diesen Seiten unterliegen dem deutschen Urheberrecht. Alle Rechte vorbehalten.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Pre-Alpha Status & Wiki-Hinweis -->
+  <div class="modal-overlay" id="modal-wiki-notice" role="dialog" aria-modal="true" aria-labelledby="modal-wiki-notice-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modal-wiki-notice-title">📜 Archive von Balurea versiegelt</h3>
+        <button class="modal-close" aria-label="Schließen">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <img src="assets/auritan_logo.png" alt="Auritan Siegel" style="width: 80px; filter: drop-shadow(0 0 10px rgba(232, 194, 122, 0.5));">
+        </div>
+        <p>
+          <strong>Halt ein, Wanderer!</strong> Die Folianten und Chroniken der Inquisition werden derzeit von den Archivaren überarbeitet.
+        </p>
+        <p>
+          Das offizielle <strong>Online-Kompendium & Welten-Wiki</strong> zu Klassen (Gideon, Gauner, Kriegshunde), Talentbäumen, Bestiarium und der Geschichte von Balurea wird pünktlich zum Start der <strong>Closed Alpha</strong> freigeschaltet.
+        </p>
+        <p style="margin-top: 16px;">
+          Trage dich in die Vormerkung ein (Testspiele starten ab Januar 2027), um als einer der Ersten Zugriff auf die Archive zu erhalten.
+        </p>
+        <div style="text-align:center; margin-top:24px;">
+          <a href="#alpha" class="btn-primary modal-action-btn">Jetzt vormerken ➔</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       DSGVO COOKIE CONSENT BANNER
+       ======================================================== -->
+  <div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookie- und Datenschutzeinstellungen">
+    <div class="cookie-content">
+      <div class="cookie-text">
+        <strong>🍪 Privatsphäre & Transparenz:</strong>
+        Wir respektieren deine Daten. Diese Seite nutzt ausschließlich technisch notwendige Speicherungen (Speichern deiner Cookie-Wahl sowie lokale Sicherung deiner Vormerkung). Es erfolgt <strong>kein Werbe-Tracking</strong> und keine Weitergabe an Dritte.
+        <a href="#" class="modal-trigger cookie-link" data-modal="modal-datenschutz">Mehr erfahren</a>
+      </div>
+      <div class="cookie-buttons">
+        <button type="button" id="cookie-necessary-btn" class="btn-secondary btn-sm">Nur Notwendige</button>
+        <button type="button" id="cookie-accept-all-btn" class="btn-primary btn-sm">Alle Akzeptieren</button>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
