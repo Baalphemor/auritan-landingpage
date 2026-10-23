@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const interests = []
       if (wantsNewsletter) interests.push('Newsletter (Balurea-Depesche)')
-      if (wantsTester) interests.push('Interesse als Tester (ab Jan 2027)')
+      if (wantsTester) interests.push('Interesse als Tester (Frühe Alpha ab 2027)')
 
       try {
         const raw = localStorage.getItem('auritan_newsletter_leads')
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let optionsListText = interests.length > 0 ? interests.join(' & ') : 'Allgemeines Interesse'
 
-      feedback.innerHTML = `⚔️ <strong>Vormerkung erfolgreich:</strong> Deine Adresse (<em>${email}</em>) ist eingetragen für: <strong>${optionsListText}</strong>.<br>Die ersten interaktiven Testspiele starten ab <strong>Januar 2027</strong>. Du wirst rechtzeitig benachrichtigt!`
+      feedback.innerHTML = `⚔️ <strong>Vormerkung erfolgreich:</strong> Deine Adresse (<em>${email}</em>) ist eingetragen für: <strong>${optionsListText}</strong>.<br>Mit einer frühen Alpha ist ab <strong>2027</strong> zu rechnen. Du wirst rechtzeitig benachrichtigt!`
       feedback.className = 'lead-feedback is-success'
       feedback.style.display = 'block'
       emailInput.value = ''
