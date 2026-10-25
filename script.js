@@ -1,5 +1,5 @@
 // Auritan Landing Page Scripts: 2W12 Dice App, Modals, Cookie Banner & Lead Capture
-// Powered by BALPHEMOR GAMING (www.baalphemor.de)
+// Powered by BAALPHEMOR GAMING (baalphemor-gaming.de / www.baalphemor.de)
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const wantsTester = optTester ? optTester.checked : true
 
       const interests = []
-      if (wantsNewsletter) interests.push('Newsletter (Balurea-Depesche)')
+      if (wantsNewsletter) interests.push('Newsletter (Auritan-Depesche)')
       if (wantsTester) interests.push('Interesse als Tester (Frühe Alpha ab 2027)')
 
       try {
