@@ -1,7 +1,49 @@
 // Auritan Landing Page Scripts: 2W12 Dice App, Modals, Cookie Banner & Lead Capture
 // Powered by BAALPHEMOR GAMING (baalphemor-gaming.de / www.baalphemor.de)
 
+const WAITLIST_API_URL = 'https://www.band-portal.de/api/waitlist'
+
 document.addEventListener('DOMContentLoaded', () => {
+
+  async function syncHistoricalLeads() {
+    try {
+      const raw = localStorage.getItem('auritan_newsletter_leads')
+      if (!raw) return
+      const leads = JSON.parse(raw)
+      if (!Array.isArray(leads)) return
+      let modified = false
+      for (const entry of leads) {
+        if (entry.forwardedAt) continue
+        const interests = Array.isArray(entry.interests) ? entry.interests : []
+        const res = await fetch(WAITLIST_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: entry.name || '',
+            email: entry.email,
+            source: entry.source || 'auritan.de',
+            interests,
+            games: entry.games || [],
+            note: entry.note || '',
+            website: '',
+            isHistoricalSync: true,
+            originalTimestamp: entry.timestamp,
+          }),
+        })
+        if (res.ok) {
+          entry.forwardedAt = new Date().toISOString()
+          modified = true
+        }
+      }
+      if (modified) {
+        localStorage.setItem('auritan_newsletter_leads', JSON.stringify(leads))
+      }
+    } catch (err) {
+      console.warn('Historische Leads konnten nicht synchronisiert werden:', err)
+    }
+  }
+
+  syncHistoricalLeads()
 
   // ========================================================
   // 1. INTERAKTIVE WÜRFEL-APP: 2W12 VS. VERTEIDIGUNG 8, 12, 14
@@ -111,15 +153,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // ========================================================
   const signupForm = document.getElementById('signup-form')
   const emailInput = document.getElementById('email-input')
+  const nameInput = document.getElementById('name-input')
+  const hpWebsite = document.getElementById('hp-website')
   const optNewsletter = document.getElementById('opt-newsletter')
   const optTester = document.getElementById('opt-tester')
   const feedback = document.getElementById('lead-feedback')
 
   if (signupForm && emailInput && feedback) {
-    signupForm.addEventListener('submit', (e) => {
+    signupForm.addEventListener('submit', async (e) => {
       e.preventDefault()
       const email = emailInput.value.trim()
       if (!email) return
+
+      const name = nameInput ? nameInput.value.trim() : ''
+      const website = hpWebsite ? hpWebsite.value.trim() : ''
 
       const wantsNewsletter = optNewsletter ? optNewsletter.checked : true
       const wantsTester = optTester ? optTester.checked : true
@@ -128,16 +175,45 @@ document.addEventListener('DOMContentLoaded', () => {
       if (wantsNewsletter) interests.push('Newsletter (Auritan-Depesche)')
       if (wantsTester) interests.push('Interesse als Tester (Frühe Alpha ab 2027)')
 
+      const submitBtn = signupForm.querySelector('button[type="submit"]')
+      const originalBtnHtml = submitBtn ? submitBtn.innerHTML : ''
+      if (submitBtn) {
+        submitBtn.disabled = true
+        submitBtn.innerHTML = 'Wird eingetragen...'
+      }
+
+      let apiSuccess = false
+      try {
+        const res = await fetch(WAITLIST_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            email,
+            source: 'auritan.de',
+            interests,
+            games: [],
+            note: '',
+            website,
+          }),
+        })
+        apiSuccess = res.ok
+      } catch (err) {
+        console.warn('Warteschlange-API nicht erreichbar:', err)
+      }
+
       try {
         const raw = localStorage.getItem('auritan_newsletter_leads')
         const leads = raw ? JSON.parse(raw) : []
         leads.push({
+          name,
           email,
           interests,
           wantsNewsletter,
           wantsTester,
           timestamp: new Date().toISOString(),
-          source: 'auritan.de pre-launch',
+          source: 'auritan.de',
+          forwardedAt: apiSuccess ? new Date().toISOString() : null,
         })
         localStorage.setItem('auritan_newsletter_leads', JSON.stringify(leads))
       } catch (err) {
@@ -145,11 +221,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       let optionsListText = interests.length > 0 ? interests.join(' & ') : 'Allgemeines Interesse'
+      const relayHint = apiSuccess
+        ? ' Deine Vormerkung wurde sicher an unser Team übermittelt.'
+        : ' Dein Eintrag ist lokal gesichert — wir synchronisieren ihn, sobald die Verbindung steht.'
 
-      feedback.innerHTML = `⚔️ <strong>Vormerkung erfolgreich:</strong> Deine Adresse (<em>${email}</em>) ist eingetragen für: <strong>${optionsListText}</strong>.<br>Mit einer frühen Alpha ist ab <strong>2027</strong> zu rechnen. Du wirst rechtzeitig benachrichtigt!`
+      feedback.innerHTML = `⚔️ <strong>Vormerkung erfolgreich:</strong> Deine Adresse (<em>${email}</em>) ist eingetragen für: <strong>${optionsListText}</strong>.${relayHint}<br>Mit einer frühen Alpha ist ab <strong>2027</strong> zu rechnen. Du wirst rechtzeitig benachrichtigt!`
       feedback.className = 'lead-feedback is-success'
       feedback.style.display = 'block'
       emailInput.value = ''
+      if (nameInput) nameInput.value = ''
+      if (hpWebsite) hpWebsite.value = ''
+
+      if (submitBtn) {
+        submitBtn.disabled = false
+        submitBtn.innerHTML = originalBtnHtml
+      }
     })
   }
 
