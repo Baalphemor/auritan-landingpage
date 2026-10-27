@@ -158,6 +158,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const optNewsletter = document.getElementById('opt-newsletter')
   const optTester = document.getElementById('opt-tester')
   const feedback = document.getElementById('lead-feedback')
+  const auritanDiscordBtn = document.getElementById('auritan-discord-request-btn')
+
+  if (auritanDiscordBtn) {
+    auritanDiscordBtn.addEventListener('click', () => {
+      try {
+        const u = new URL('https://www.baalphemor.de/discord/')
+        u.searchParams.set('world', 'gaming')
+        u.searchParams.set('from', 'auritan.de')
+        const n = nameInput ? nameInput.value.trim() : ''
+        const m = emailInput ? emailInput.value.trim() : ''
+        if (n) u.searchParams.set('name', n)
+        if (m) u.searchParams.set('email', m)
+        auritanDiscordBtn.href = u.toString()
+      } catch (_) {}
+    })
+  }
 
   if (signupForm && emailInput && feedback) {
     signupForm.addEventListener('submit', async (e) => {
@@ -225,7 +241,8 @@ document.addEventListener('DOMContentLoaded', () => {
         ? ' Deine Vormerkung wurde sicher an unser Team übermittelt.'
         : ' Dein Eintrag ist lokal gesichert — wir synchronisieren ihn, sobald die Verbindung steht.'
 
-      feedback.innerHTML = `⚔️ <strong>Vormerkung erfolgreich:</strong> Deine Adresse (<em>${email}</em>) ist eingetragen für: <strong>${optionsListText}</strong>.${relayHint}<br>Mit einer frühen Alpha ist ab <strong>2027</strong> zu rechnen. Du wirst rechtzeitig benachrichtigt!`
+      const dcUrl = `https://www.baalphemor.de/discord/?world=gaming&from=auritan.de&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`
+      feedback.innerHTML = `⚔️ <strong>Vormerkung erfolgreich:</strong> Deine Adresse (<em>${email}</em>) ist eingetragen für: <strong>${optionsListText}</strong>.${relayHint}<br>Mit einer frühen Alpha ist ab <strong>2027</strong> zu rechnen. Du wirst rechtzeitig benachrichtigt!<div style="margin-top:12px;"><a href="${dcUrl}" target="_blank" rel="noopener noreferrer" class="btn-discord-request"><span>🛡️ Beitritt zur Discord Community anfragen</span><span class="btn-arrow">➔</span></a></div>`
       feedback.className = 'lead-feedback is-success'
       feedback.style.display = 'block'
       emailInput.value = ''
