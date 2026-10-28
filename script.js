@@ -154,6 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const signupForm = document.getElementById('signup-form')
   const emailInput = document.getElementById('email-input')
   const nameInput = document.getElementById('name-input')
+  const introNoteInput = document.getElementById('intro-note-input')
   const hpWebsite = document.getElementById('hp-website')
   const optNewsletter = document.getElementById('opt-newsletter')
   const optTester = document.getElementById('opt-tester')
@@ -182,6 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!email) return
 
       const name = nameInput ? nameInput.value.trim() : ''
+      const introNote = introNoteInput ? introNoteInput.value.trim() : ''
       const website = hpWebsite ? hpWebsite.value.trim() : ''
 
       const wantsNewsletter = optNewsletter ? optNewsletter.checked : true
@@ -209,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
             source: 'auritan.de',
             interests,
             games: [],
-            note: '',
+            note: introNote,
             website,
           }),
         })
@@ -225,6 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
           name,
           email,
           interests,
+          note: introNote,
           wantsNewsletter,
           wantsTester,
           timestamp: new Date().toISOString(),
@@ -247,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
       feedback.style.display = 'block'
       emailInput.value = ''
       if (nameInput) nameInput.value = ''
+      if (introNoteInput) introNoteInput.value = ''
       if (hpWebsite) hpWebsite.value = ''
 
       if (submitBtn) {
